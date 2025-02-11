@@ -15,7 +15,7 @@ WORKDIR /scripts
 COPY run.sh /scripts/run.sh
 
 RUN echo "[program:warp-svc]\ncommand=/bin/bash -c /usr/bin/warp-svc\nautostart=true\nautorestart=true\nstartretries=3\nstderr_logfile=/var/log/warp.log\nstdout_logfile=/var/log/warp.log\n" > /etc/supervisor/conf.d/warp.conf
-RUN echo  "sh /scripts/run.sh\nsupervisord\nsleep 5\nwarp-cli connect\n"  > /init.sh && chmod +x /init.sh
+RUN echo  "sh /scripts/run.sh\nsupervisord\nsleep 5\nwarp-cli --accept-tos connect\n"  > /init.sh && chmod +x /init.sh
 
 CMD ["bash","-c","/init.sh"]
     
