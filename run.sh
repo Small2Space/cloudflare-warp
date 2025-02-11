@@ -15,5 +15,3 @@ echo "<string>$auth_secret</string>" >> $path
 echo "<key>warp_connector_token</key>" >> $path
 echo "<string>$token</string>" >> $path
 echo "</dict>" >> $path
-
-warp-svc
