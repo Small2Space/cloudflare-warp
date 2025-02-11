@@ -11,6 +11,8 @@ RUN echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-
 RUN apt-get update
 RUN apt-get install -y cloudflare-warp
 
-COPY run.sh /scripts
+WORKDIR /scripts
+
+COPY run.sh /scripts/run.sh
 CMD ["sh","/scripts/run.sh"]
     
