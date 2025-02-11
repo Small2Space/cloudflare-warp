@@ -4,6 +4,7 @@ auth_secret=$(echo $AUTH_CLIENT_SECRET)
 token=$(echo $WARP_CONNECTOR_TOKEN)
 
 path="/var/lib/cloudflare-warp/mdm.xml"
+mkdir -p /var/lib/cloudflare-warp
 
 echo "<dict>" > $path
 echo "<key>organization</key>" >> $path
