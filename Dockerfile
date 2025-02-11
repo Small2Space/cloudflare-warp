@@ -13,6 +13,7 @@ RUN apt-get install -y cloudflare-warp gpg supervisor
 
 WORKDIR /scripts
 COPY run.sh /scripts/run.sh
+COPY supervisord.conf /etc/supervisor/supervisord.conf
 
 RUN echo "[program:warp-svc]\ncommand=/bin/bash -c /usr/bin/warp-svc\nautostart=true\nautorestart=true\nstartretries=3\nstderr_logfile=/var/log/warp.log\nstdout_logfile=/var/log/warp.log\n" > /etc/supervisor/conf.d/warp.conf
 RUN echo  "sh /scripts/run.sh\nsupervisord -c /etc/supervisor/supervisord.conf\nsleep 5\nwarp-cli --accept-tos connect\n"  > /init.sh && chmod +x /init.sh
